@@ -1,0 +1,97 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" >
+    
+    <aura:attribute name="isContent" type="Boolean" default="false" />
+    <aura:attribute name="isPeople" type="Boolean" default="false" />
+    <aura:attribute name="isChannels" type="Boolean" default="false" />
+    <aura:attribute name="isGroup" type="Boolean" default="false" />
+     <aura:attribute name="itemType" type="string" default=""/>
+    
+    <aura:attribute name="contentCards" type="String[]" />
+    
+     <div class="ed-container" style="min-height: 550px; background-color:white; width:100%;"> 
+        <div class="ed-header">
+            <nav class="ed-nav">
+                  
+                <ul>  
+                    <li class="{!v.itemType == 'content' ? 'active': ''}"><a data-calling="content"  onclick="{!c.changeTab}" href="javascript:void(0);">Content</a></li>
+                    <li class="{!v.itemType == 'people' ? 'active': ''}"><a data-calling="people"  onclick="{!c.changeTab}" href="javascript:void(0);">People</a></li>
+                    <li class="{!v.itemType == 'channel' ? 'active': ''}"><a data-calling="channel"  onclick="{!c.changeTab}" href="javascript:void(0);">Channel</a></li>
+                    <li class="{!v.itemType == 'group' ? 'active': ''}"><a data-calling="group"  onclick="{!c.changeTab}" href="javascript:void(0);">group</a></li>
+                </ul> 
+                <div class="content">
+                  
+                </div>
+                    
+                
+            </nav>
+            
+        </div>  
+     
+        <div class="ed-main" style="min-height:550px; overflow-y:scroll;">
+         <aura:if isTrue="{!v.isContent}">
+            <div class="row pd" style = "width:100%;">
+                 <div class="column">
+                <div class="slds-card" style = "display:flex;margin-top:10px;width:100%;">
+                    <div class="slds-p-around_medium">My content</div>
+                </div>
+                </div>
+                  <div class="column">
+                <div class="slds-card"  style = "display:flex; margin-top:10px; width:100%;">
+                    <div class="slds-p-around_medium" >  My content</div>
+                </div>
+                </div>
+                 <div class="column">
+                     
+                     
+                </div>
+                
+            </div>
+            
+        </aura:if>
+         <aura:if isTrue="{!v.isPeople}">
+          <div class="row pd" style = "width:100%;">
+                 <div class="column">
+                <div class="slds-card" style = "display:flex;margin-top:10px;width:100%;">
+                    <div class="slds-p-around_medium">My people</div>
+                </div>
+                </div>
+                  <div class="column">
+                <div class="slds-card"  style = "display:flex; margin-top:10px; width:100%;">
+                    <div class="slds-p-around_medium" >  My people</div>
+                </div>
+                </div>
+            </div>
+            
+        </aura:if>
+         <aura:if isTrue="{!v.isChannels}">
+            <div class="row pd" style = "width:100%;">
+                 <div class="column">
+                <div class="slds-card" style = "display:flex;margin-top:10px;width:100%;">
+                    <div class="slds-p-around_medium">My Channel</div>
+                </div>
+                </div>
+                  <div class="column">
+                <div class="slds-card"  style = "display:flex; margin-top:10px; width:100%;">
+                    <div class="slds-p-around_medium" >  My channel</div>
+                </div>
+                </div>
+            </div>
+            
+        </aura:if>
+         <aura:if isTrue="{!v.isGroup}">
+          <div class="row pd" style = "width:100%;">
+                 <div class="column">
+                <div class="slds-card" style = "display:flex;margin-top:10px;width:100%;">
+                    <div class="slds-p-around_medium">My Group</div>
+                </div>
+                </div>
+                  <div class="column">
+                <div class="slds-card"  style = "display:flex; margin-top:10px; width:100%;">
+                    <div class="slds-p-around_medium" >  My Group</div>
+                </div>
+                </div>
+            </div>
+        </aura:if>  
+    </div>
+           </div>
+</aura:component>

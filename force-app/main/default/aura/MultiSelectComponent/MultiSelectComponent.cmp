@@ -1,0 +1,5 @@
+<aura:component controller="ExpenseOptionsCtr">
+<aura:attribute name="lstExpenseData" type="Expense__c[]" />
+<aura:handler name="init" action="{!c.doInit}" value="{!this}"></aura:handler>
+<c:QFMultiSelectUIComp options_="{!v.lstExpenseData}" />
+</aura:component>

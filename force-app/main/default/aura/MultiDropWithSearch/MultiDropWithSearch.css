@@ -1,0 +1,10 @@
+.THIS .loader{
+    border: 2px solid #999999;
+    border-radius: 50%;
+    border-top: 2px solid rgb(86, 65, 128);
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin-left: 49%;
+    margin-top: 14px;
+}

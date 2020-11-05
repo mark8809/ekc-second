@@ -1,0 +1,118 @@
+<aura:component >
+    <aura:attribute name="infoText" type="String" default="All filters" />  
+    <aura:attribute name="levelList" type="list"/>
+    <aura:attribute name="ratinglList" type="list"/>
+    <aura:attribute name="fromList" type="List" default="[
+    {'label': '1', 'value': '1'},
+    {'label': '2', 'value': '2'},
+    {'label': '3', 'value': '3'},
+    ]"/>
+    <aura:attribute name="toList" type="List" default="[
+    {'label': '1', 'value': '1'},
+    {'label': '2', 'value': '2'},
+    {'label': '3', 'value': '3'},
+    ]"/>
+    
+    <aura:attribute name="isOpen" type="Boolean" default="false" /> 
+    <aura:handler name="init" value="{!this}" action="{!c.init}" />
+    
+    
+    
+    <div aura:id="main-div" class=" slds-picklist slds-dropdown-trigger slds-dropdown-trigger--click ">
+        <button class="slds-button slds-button--neutral slds-picklist__label" aria-haspopup="true" onclick="{!c.handleClick}" onmouseleave="{!c.handleMouseOutButton}">
+            <span class="slds-truncate" title="{!v.infoText}">{!v.infoText}</span>
+            <lightning:icon iconName="utility:down" size="small" class="slds-icon" />
+        </button>
+    </div>
+    
+    <div class="slds-m-around_xx-large">   
+        <aura:if isTrue="{!v.isOpen}">
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-modal_large slds-fade-in-open">
+                <div class="slds-modal__container" >
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1" style="height:400px; width:100%;border-style: groove;"  onmouseleave="{!c.handleMouseOutFilter}">
+                        <div class="All-filters" style="margin-bottom:20px; padding:20px; padding-left:0px;">
+                            <h1 class="heading-cls-new"  title="" style="float:left; text-color:blue;">All Content Filters</h1>
+                            <button class="slds-button slds-button_brand" onclick="{! c.handleClickOnFilterBotton }" style="margin-right:20px; float:right;">Apply</button>
+                            
+                            <button class="slds-button slds-button_neutral" onclick="{! c.handleClickOnFilterBotton }" style="margin-right:20px; float:right;">Cancel</button>
+                        </div>
+                        
+                        <div class="filter" style="position:relative; top:25px;"> 
+                            <div class="slds-grid slds-wrap">
+                                
+                                <div class="slds-col slds-size_3-of-12">
+                                    <p style="position:relative; bottom:10px;margin-left:10px;">Type</p>
+                                    <div class="Type" style="overflow-y:scroll; height:290px;">  
+                                        <c:MultiDropWithSearch itemType="Type"/>
+                                    </div>
+                                    <div class="level-head" style="margin:10px;">
+                                        <h1 style="position:relative; bottom:10px;margin-top:20px; color:blue;">level</h1>
+                                    </div>
+                                    <div class="level" style="margin-left:10px;">
+                                        <aura:iteration items="{!v.levelList}" var="option">
+                                            <div class="{!'slds-dropdown__item ' + (option.selected ? 'slds-is-selected' : '')}" role="presentation" onclick="{!c.handleSelectionLevel}" data-value="{!option}" data-selected="{!option.selected}">
+                                                <span class="slds-truncate" style="text-align: center;">
+                                                    <span class="marg" style="padding-right:10px; margin-top:15px;"> 
+                                                        <ui:inputCheckbox aura:id="checkbox" value="{!option.selected}" />
+                                                    </span> {!option}
+                                                </span>
+                                            </div>
+                                        </aura:iteration>
+                                    </div>
+                                </div>
+                                
+                                <div class="slds-col slds-size_3-of-12">
+                                    <p style="position:relative; bottom:10px;margin-left:10px;">Languages</p>
+                                    <div class="Type" style="overflow-y:scroll; height:290px;">  
+                                        <c:MultiDropWithSearch itemType="Languages"/>
+                                    </div>
+                                    <div class="rating-head" style="margin:10px;">
+                                        <h1 style="position:relative; bottom:10px;margin-top:20px;color:blue;">Rating</h1>
+                                    </div>
+                                    
+                                    <div class="rating" style="margin-left:10px;">
+                                        <aura:iteration items="{!v.ratinglList}" var="option">
+                                            <div class="{!'slds-dropdown__item ' + (option.selected ? 'slds-is-selected' : '')}" role="presentation" onclick="{!c.handleSelectionLevel}" data-value="{!option}" data-selected="{!option.selected}">
+                                                <span class="slds-truncate" style="text-align: center;">
+                                                    <span class="marg" style="padding-right:10px; margin-top:15px;"> 
+                                                        <ui:inputCheckbox aura:id="checkbox" value="{!option.selected}" />
+                                                    </span> {!option}
+                                                </span>
+                                            </div>
+                                        </aura:iteration>
+                                    </div>
+                                    
+                                </div>
+                                
+                                <div class="slds-col slds-size_3-of-12">
+                                    <p style="position:relative; bottom:10px;margin-left:10px;">Content Source</p>
+                                    <div class="Type" style="overflow-y:scroll; height:290px;">  
+                                        <c:MultiDropWithSearch  itemType="Content Source" />
+                                    </div> 
+                                    <div class="year-range" style="margin:10px;">
+                                        <h1 style="position:relative; bottom:10px;margin-top:20px;color:blue;">Year Range</h1>
+                                    </div>
+                                    <div class="from" style="margin-left:10px; margin-right:10px;">
+                                            <lightning:combobox name="progress"  placeholder="from" options="{!v.fromList }" onchange="{! c.handleChangeFrom }"/>
+                                     </div>
+                                    <div class="to" style="margin-left:10px; margin-right:10px;">
+                                            <lightning:combobox name="progress"  placeholder="to" options="{! v.fromList }" onchange="{! c.handleChangeTo }"/>
+                                     </div>
+                                </div>
+                                <div class="slds-col slds-size_3-of-12">
+                                    <p style="position:relative; bottom:10px;margin-left:10px;">Pricing</p>
+                                    <div class="Type" style="overflow-y:scroll; height:290px;">  
+                                        <c:MultiDropWithSearch  itemType="Pricing"/>
+                                    </div>                                
+                                </div>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+            </section>
+        </aura:if>
+    </div>
+    
+</aura:component>

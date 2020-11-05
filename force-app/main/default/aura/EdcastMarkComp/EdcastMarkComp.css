@@ -1,0 +1,112 @@
+.THIS {
+    
+    /* min-height: 500px; */
+    margin: 0px;
+     padding: 0px; 
+    background: #fff;
+    font-family: "Segoe UI Web (West European)",Segoe UI,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif;
+    -webkit-font-smoothing: antialiased;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.THIS .ed-header{
+    padding: 8px;
+    height: 62px;
+    width:100%;
+    background-color: #dddddd;
+    box-shadow: 0 0 8px 0 rgba(131, 134, 163, 0.14);
+}
+.THIS .ed-nav {
+    display: flex;
+    flex-direction: row;
+   
+    left: 0%;
+}
+.THIS .ed-nav ul {
+    display: flex;
+    flex-direction: row;
+    margin-top: 15px;
+    padding: 0px;
+ }
+
+.THIS .ed-nav ul li {
+    padding-right: 12px;
+    padding-left: 12px;
+    list-style: none;
+ }
+
+.THIS .ed-nav ul li a {
+    height: 21px;
+    font-family: SFProText;
+    font-size: 14px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: 0.39px;
+    color: #737394;
+    text-decoration: none;
+}
+
+.THIS .ed-nav ul li::before {
+    background-color: transparent;
+    bottom: -20px;
+    left: 8px;
+    position: absolute;
+    right: 8px;
+    box-sizing: border-box;
+    transition: background-color 0.267s cubic-bezier(0.1, 0.25, 0.75, 0.9) 0s;
+    display: none;
+    height: 4px;
+    background-color: #39b6a0;
+}
+
+.THIS .ed-nav ul li.active::before {
+    display: block;
+}
+
+.THIS .ed-nav ul li.active a {
+    height: 21px;
+    font-family: SFProText;
+    font-size: 14px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.5;
+    letter-spacing: 0.39px;
+    color: #26273b;
+    text-decoration: none;
+}
+
+.THIS .ed-container{
+    height: 100vh; 
+    display: flex; 
+    flex-direction: column;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased; 
+    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    position: relative;
+ }
+
+.THIS .row {
+    margin: 0 -5px;
+    position: relative;
+    bottom: 10px;
+    width:100%;
+}
+
+.THIS .column {
+    float: left;
+    width: 25%;
+    padding: 0 8px;
+    max-width: 276px;
+    height: 270px;
+    display: flex; 
+    margin:5px;
+}
+.THIS .pd {
+    padding: 8px 8px;
+    margin-top:10px;
+ }

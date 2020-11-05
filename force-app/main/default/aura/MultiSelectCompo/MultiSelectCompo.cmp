@@ -1,0 +1,65 @@
+<aura:component>
+    <aura:attribute name="selectedStageList" type="List" />
+    <aura:attribute name="stageList" type="List" default="[{'stage': 'New', 'value': 'new', 'isChecked': false},{'stage': 'In Progress', 'value': 'inProgress','isChecked': false},{'stage': 'Finished', 'value':'finished', 'isChecked': false},]"/>
+    
+    <aura:attribute name="isTooltip" type="Boolean" default="false"/>
+    <aura:attribute name="tooltip" type="Boolean" default="false" />
+    <aura:attribute name="showstage" type="Boolean" default="false" />
+    <aura:attribute name="isOption" type="Boolean" default="false" />
+    <aura:attribute name="infoText" type="String" default="content type" />
+    
+    <div class="slds-grid slds-grid_vertical-align-start">
+        <div class="slds-col">
+            <div class="slds-form-element " >
+                <label class="slds-form-element__label" for="combobox-id-5"></label>
+                <div class="slds-form-element__control">
+                    <div class="slds-combobox_container slds-size_small" aura:id="main-div">
+                        <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click slds-is-open" aria-expanded="true" aria-haspopup="listbox" role="combobox"   onclick="{!c.handleMouseEnter}" onmouseleave="{!c.handleMouseLeave}" >
+                            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none"  style="width:130px; margin-left:22px;">
+                                <input type="text" class="slds-input slds-combobox__input slds-has-focus slds-combobox__input-value" id="combobox-id-5" 
+                                       aria-controls="listbox-id-5" autoComplete="off" role="textbox" placeholder="{!v.infoText}" readonly="" value="" />
+                                <!--  <span class="slds-truncate" title="{!v.infoText}">{!v.infoText}</span>    -->                                                
+                                <span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
+                                    <lightning:icon iconName="utility:down" alternativeText="Connected" size="xx-small"
+                                   title="xx-small size" />
+                                </span>
+                            </div>
+                            <aura:if isTrue="{!v.showstage}"> 
+                                <div id="listbox-id-5" class="slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid" role="listbox" 
+                                     style="width:130px;" >
+                                    <div class="slds-grid slds-grid_vertical">
+                                        <ul class="slds-listbox slds-listbox_vertical" role="presentation">                                                                                                                                                                  
+                                            <aura:iteration items = "{!v.stageList}" var = "item"  >
+                                                <li role="presentation" class="slds-listbox__item" >
+                                                    <div aria-checked="true" id="option1" class="slds-media slds-listbox__option slds-listbox__option_plain slds-media_small slds-is-selected" role="option">
+                                                        <aura:if isTrue="{!item.isChecked}"> 
+                                                            <lightning:icon iconName="utility:check" size="xx-small"></lightning:icon>
+                                                        </aura:if>
+                                                        <span class="slds-media__body">
+                                                            
+                                                            <span class="slds-truncate" title="Option A" onclick="{!c.handleSelection}"  data-stage="{!item.stage}" >{!item.stage}</span>
+                                                            
+                                                        </span>
+                                                    </div>
+                                                </li>
+                                            </aura:iteration>
+                                            <footer class="slds-popover__footer slds-popover__footer_form">
+                                                <lightning:button label="cancel" class="slds-button_brand" onclick="{!c.handleCancel }"  />
+                                                
+                                                <lightning:button label="Submit" class="slds-button_brand" onclick="{!c.handleSave }"  />
+                                            </footer>                                                                                                                                                                     
+                                        </ul>
+                                        
+                                    </div>
+                                </div>
+                            </aura:if>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+</aura:component>
